@@ -5,7 +5,7 @@ High level synthesis of Gaussian Blur
 ## Compile 
 
 ### Enter the strtus directory.
-  cd Gaussian_stratus/stratus
+  cd stratus
 
 ### Behavioral simulation
   make sim_B
