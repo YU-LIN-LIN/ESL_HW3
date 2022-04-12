@@ -3,12 +3,14 @@
 ### GitHub repo
 https://github.com/YU-LIN-LIN/ESL_HW3
 
+## First Part
+
 ### General description or introduction of the problem and your solution
 	In this homework, I design a synthesizable verdion of the Gaussian blur module.
 	Doing basic HLS (without optimization), and other optimized HLS offered by stratus HLS like loop-unrolling, data path optimization and pipeline.
 	
 ### Implementation details
-	timing	lat_min	lat_max	hls_config	loop_unroll	initial interval	latency		area
+	timing	lat_min	lat_max	hls_config	loop_unroll	initiation interval	latency		area
 	20	0	3	BASIC		X		X			20		2253.6	
 	20	0	3	DPA		X		X			29		1813.4	
 	10	0	3	BASIC		X		X			20		2253.6	
@@ -35,3 +37,7 @@ https://github.com/YU-LIN-LIN/ESL_HW3
 ### Discussions and conclusions
 	At first, I changed the (min, max) value of latency constaint from (0, 1) to (0, 3). Or the cycle time needs to set really large to make HLS be successful.
 	In this homework, we can make the latency 20 times lower with just 2 times larger in area. I think it is a valuable tradeoff.
+
+## Second Part
+	After BASIC HLS, I knew the latency of Gaussian Filter without pipeline is 20 cycles, and the total simulated time is 14548992 ns. It is not the same with the result of BASIC HLS, whose total simulated time is 13107250. I guess it is because TLM interface need a dummydelay to wait for blocking transport. After subtract that, they are almost the same. After doing pipeline operation, the latency should be the same as the initiation interval(II). Take II = 1, then the total simulation time in the TLM version shoud be ((256*256*10) + (dummydelay for blocking transport)) ns.
+	
